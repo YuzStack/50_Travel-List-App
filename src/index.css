@@ -155,6 +155,13 @@ input[type='checkbox'] {
   }
 }
 
+@media (width < 769px) {
+  h1 {
+    font-size: 5.2rem;
+    padding-inline: 0.5rem;
+  }
+}
+
 @media (width < 490px) {
   h1 {
     padding-inline: 1rem;
