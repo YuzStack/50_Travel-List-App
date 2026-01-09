@@ -1,11 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from './Header';
 import Form from './Form';
 import PackingList from './PackingList';
 import Stats from './Stats';
 
 function App() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(() => {
+    const storedItems = window.localStorage.getItem('items');
+
+    return storedItems ? JSON.parse(storedItems) : [];
+  });
+
+  useEffect(
+    () => window.localStorage.setItem('items', JSON.stringify(items)),
+    [items],
+  );
 
   const handleAddItem = function (item) {
     setItems(curItems => [...curItems, item]);
